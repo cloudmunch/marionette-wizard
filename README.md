@@ -2,7 +2,7 @@
 A wizard built over Backbone Marionette.
 
 ##Documentation
-See the [wiki](#https://github.com/cloudmunch/marionette-wizard/wiki)
+See the [wiki](https://github.com/cloudmunch/marionette-wizard/wiki)
 
 ##Dependencies
 1. Backbone
