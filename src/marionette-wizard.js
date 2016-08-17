@@ -427,7 +427,7 @@ define( function( require ) {
 	                }
 	            } );
 	            var view = new StaticView( options );
-	            thisView.__showChildView( "content", view  );
+	            thisView.showChildView( "content", view  );
 	            innerViewPromise.then( function( params ) {
 	                view.destroy();
 	                view.remove();
