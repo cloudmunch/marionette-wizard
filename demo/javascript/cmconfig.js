@@ -7,7 +7,7 @@
 
 requirejs.config( {
   waitSeconds: 200,
-  "baseUrl": "demo/javascript",
+  "baseUrl": "javascript",
   "paths":
   {
     "jquery": "vendor/jquery.min",
