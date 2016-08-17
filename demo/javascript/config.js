@@ -16,7 +16,7 @@ requirejs.config( {
     "backbone.marionette": "vendor/backbone.marionette",
     "dust": "vendor/dust-full",
     "dusthelpers": "vendor/dust-helpers",
-    "marionette-wizard": "../src/marionette-wizard",
+    "marionette-wizard": "../../src/marionette-wizard",
     "backbone.advice": "vendor/backbone.advice",
     "json-viewer": "vendor/json-viewer"
   },
