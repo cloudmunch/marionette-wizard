@@ -1,8 +1,9 @@
 {
-  "start": "start_step",  
-  "steps": {  
-    "start_step": {  
-     "type": "static_view",  
-     "template": "hello-world"
-   }
+  "start": "start_step",
+  "steps": {
+    "start_step": {
+      "type": "static_view",
+      "template": "hello-world"
+    }
+  }
 }
