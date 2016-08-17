@@ -1,7 +1,7 @@
 define ( function( require ) {
 	"use strict";
 	require( "templates" );
-	var DemoWrapperView = require( "demo-wrapper-view" );
+	var DemoWrapperView = require( "views/demo-wrapper-view" );
 	var Marionette = require( "backbone.marionette" );
 	var dust = require( "dust" );
 

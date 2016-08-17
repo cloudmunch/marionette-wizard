@@ -2,7 +2,7 @@ define ( function( require ) {
 	"use strict";
 
 	var Marionette = require( "backbone.marionette" );
-	var ChildView = require( "individual-example-view" );
+	var ChildView = require( "views/individual-example-view" );
 	var Backbone = require( "backbone" );
 
 	var Model = Backbone.Model;
