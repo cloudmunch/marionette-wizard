@@ -7,7 +7,7 @@
 
 requirejs.config( {
   waitSeconds: 200,
-  "baseUrl": "vendor",
+  "baseUrl": "demo",
   "paths":
   {
     "jquery": "../vendor/jquery.min",
@@ -16,7 +16,8 @@ requirejs.config( {
     "backbone.marionette": "../vendor/backbone.marionette",
     "dust": "../vendor/dust-full",
     "dusthelpers": "../vendor/dust-helpers",
-    "marionette-wizard": "../vendor/marionette-wizard"
+    "marionette-wizard": "src/marionette-wizard",
+    "backbone.advice": "../vendor/backbone.advice"
   },
   "shim":
   {
