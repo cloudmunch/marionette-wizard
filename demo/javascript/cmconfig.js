@@ -7,17 +7,18 @@
 
 requirejs.config( {
   waitSeconds: 200,
-  "baseUrl": "demo",
+  "baseUrl": "demo/javascript",
   "paths":
   {
-    "jquery": "../vendor/jquery.min",
-    "backbone": "../vendor/backbone",
-    "underscore": "../vendor/underscore",
-    "backbone.marionette": "../vendor/backbone.marionette",
-    "dust": "../vendor/dust-full",
-    "dusthelpers": "../vendor/dust-helpers",
-    "marionette-wizard": "src/marionette-wizard",
-    "backbone.advice": "../vendor/backbone.advice"
+    "jquery": "vendor/jquery.min",
+    "backbone": "vendor/backbone",
+    "underscore": "vendor/underscore",
+    "backbone.marionette": "vendor/backbone.marionette",
+    "dust": "vendor/dust-full",
+    "dusthelpers": "vendor/dust-helpers",
+    "marionette-wizard": "../src/marionette-wizard",
+    "backbone.advice": "vendor/backbone.advice",
+    "json-viewer": "vendor/json-viewer"
   },
   "shim":
   {
@@ -39,6 +40,9 @@ requirejs.config( {
     },
     "dusthelpers": {
       deps: [ "dust" ]
+    },
+    "json-viewer": {
+      deps: [ "jquery" ]
     }
   }
 } );
