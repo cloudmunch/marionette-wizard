@@ -12,6 +12,7 @@ requirejs.config( {
   {
     "jquery": "vendor/jquery.min",
     "backbone": "vendor/backbone",
+    "marked": "vendor/marked.min",
     "underscore": "vendor/underscore",
     "backbone.marionette": "vendor/backbone.marionette",
     "dust": "vendor/dust-full",
