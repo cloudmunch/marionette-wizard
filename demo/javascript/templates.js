@@ -19,12 +19,22 @@ define(["dust", "dusthelpers"], function(dust, dust_helpers) {
     body_0.__dustBody = !0;
     return body_0;
   })();
+  // javascript/templates/hello_world.dust
+  (function() {
+    dust.register("hello_world", body_0);
+
+    function body_0(chk, ctx) {
+      return chk.w("<div>Hello World</div>");
+    }
+    body_0.__dustBody = !0;
+    return body_0;
+  })();
   // javascript/templates/individual-example.dust
   (function() {
     dust.register("individual-example", body_0);
 
     function body_0(chk, ctx) {
-      return chk.f(ctx.get(["title"], false), ctx, "h").w(" - ").f(ctx.get(["description"], false), ctx, "h").w("<div class=\"jsonContent\"></div><div class=\"wizardView\"></div>");
+      return chk.w("<h3>").f(ctx.get(["title"], false), ctx, "h").w("<h3><span class=\"description\">").f(ctx.get(["description"], false), ctx, "h").w("</span><div class=\"exampleContainer group\"><div class=\"jsonContent\"></div><div class=\"wizardView\"></div></div>");
     }
     body_0.__dustBody = !0;
     return body_0;
@@ -75,6 +85,27 @@ define(["dust", "dusthelpers"], function(dust, dust_helpers) {
       var rendered;
 
       dust.render("hello-world", locals, function(err, result) {
+        if (typeof callback === "function") {
+          try {
+            callback(err, result);
+          } catch (e) {}
+        }
+
+        if (err) {
+          throw err
+        } else {
+          rendered = result;
+        }
+      });
+
+      return rendered;
+    }
+  });
+  define("hello_world", function() {
+    return function(locals, callback) {
+      var rendered;
+
+      dust.render("hello_world", locals, function(err, result) {
         if (typeof callback === "function") {
           try {
             callback(err, result);
@@ -154,5 +185,5 @@ define(["dust", "dusthelpers"], function(dust, dust_helpers) {
       return rendered;
     }
   });
-  return ["demo-wrapper", "hello-world", "individual-example", "json-content", "simple-wizard-view"];
+  return ["demo-wrapper", "hello-world", "hello_world", "individual-example", "json-content", "simple-wizard-view"];
 });

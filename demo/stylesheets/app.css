@@ -64,7 +64,9 @@ a.json-placeholder:hover {
   border-radius: 5px; }
   /* line 6, /Users/vivekkodira/cloudmunch/marionette-wizard/demo/stylesheets/_custom.scss */
   .individualExampleDiv .jsonContent {
-    width: 50%; }
-  /* line 9, /Users/vivekkodira/cloudmunch/marionette-wizard/demo/stylesheets/_custom.scss */
+    width: 50%;
+    float: left; }
+  /* line 10, /Users/vivekkodira/cloudmunch/marionette-wizard/demo/stylesheets/_custom.scss */
   .individualExampleDiv .wizardView {
-    width: 50%; }
+    width: 50%;
+    float: left; }
