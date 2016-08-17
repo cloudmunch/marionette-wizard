@@ -44,7 +44,7 @@ define(["dust", "dusthelpers"], function(dust, dust_helpers) {
     dust.register("simple-wizard-view", body_0);
 
     function body_0(chk, ctx) {
-      return chk.w("<div class=\"content\"></div>");
+      return chk.w("<div class=\"contentDiv\"></div>");
     }
     body_0.__dustBody = !0;
     return body_0;
