@@ -317,6 +317,12 @@ define( function( require ) {
 	        } );
 	    },
 		mixinMethods: {
+			getDefaultMethod: function( methodName ) {
+				var thisView = this;
+				return ( typeof thisView[ methodName ] === "function" ) ? thisView[ methodName ] : function() {
+					return $.Deferred().resolve();
+	            };
+			},
 	        keyAction: function( evt ) {
 	            var code = evt.keyCode || evt.which;
 	            if ( code === 13 ) {
@@ -602,6 +608,7 @@ define( function( require ) {
 	            thisView.__showStepAdditionalInfo( step );
 	            thisView.showHideButtons( step );
 
+	            thisView.beforeEachStep = thisView.getDefaultMethod( "beforeEachStep" );
 	            thisView.beforeEachStep()
 	            .then( function() {
 		            var processFunction =  ( step.get( "type" ) === "static_view" ) ?
@@ -658,12 +665,8 @@ define( function( require ) {
 	        },
 	        exitWizard: function() {
 	            var thisView = this;
-	            thisView.beforeExit = ( typeof thisView.beforeExit === "function" ) ? thisView.beforeExit : function() {
-					return $.Deferred().resolve();
-	            };
-	            thisView.afterExit = ( typeof thisView.afterExit === "function" ) ? thisView.afterExit : function() {
-					return $.Deferred().resolve();
-	            };
+	            thisView.beforeExit = thisView.getDefaultMethod( "beforeExit" );
+	            thisView.afterExit = thisView.getDefaultMethod( "afterExit" );
 	            thisView.beforeExit()
 	            .then( function() {
 					thisView.__clearState();
@@ -675,9 +678,7 @@ define( function( require ) {
 	        },
 	        resetWizard: function() {
 	            var thisView = this;
-	            thisView.beforeReset = ( typeof thisView.beforeReset === "function" ) ? thisView.beforeReset : function() {
-					return $.Deferred().resolve();
-	            };
+	            thisView.beforeReset = thisView.getDefaultMethod( "beforeReset" );
 	            thisView.beforeReset().then( function() {
                     thisView.__clearState();
                     thisView.beginProcess();
