@@ -2,6 +2,6 @@
 	{
 		"id": "single-step.json",
 		"title":"Wizard with a single step",
-		"description":"This is an example of a wizard with a single step  \\nSome other line"
+		"description":"This is an example of a wizard with a single step<br/>Some other line<br/>###Sailent points<br/>* One * Two<br/>*Three"
 	}
 ]
