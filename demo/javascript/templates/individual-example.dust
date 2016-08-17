@@ -1,5 +1,5 @@
-<h3>{title}<h3>
-<span class="description">{description}</span>
+<h3>{title}</h3>
+<span class="description"></span>
 <div class="exampleContainer group">
 	<div class="jsonContent"></div>
 	<div class="wizardView"></div>
