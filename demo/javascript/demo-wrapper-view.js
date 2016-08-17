@@ -5,6 +5,7 @@ define ( function( require ) {
 	var JSONContentView = require( "views/json-content" );
 
 	return Marionette.LayoutView.extend( {
+		el: "#backboneContainer",
 		template: "demo-wrapper",
 		regions:  {
 			"jsonContent": ".jsonContent",
