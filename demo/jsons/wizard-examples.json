@@ -2,11 +2,11 @@
 	{
 		"id": "single-step.json",
 		"title":"Wizard with a single step",
-		"description":"This is an example of a wizard with a single step\n Some other line\n ### Sailent points<br/>*One* _Two_ Three"
+		"description":"This is an example of a wizard with a single step ### Notes: The view being rendered as the wizard is [ this one ]( https://github.com/cloudmunch/marionette-wizard/blob/gh-pages/demo/javascript/templates/simple-wizard-view.dust). Observe that it only defines a div with the class 'contentDiv' and has nothing else"
 	},
 	{
 		"id": "two-step.json",
 		"title":"Wizard with a two steps",
-		"description":"This is an example of a wizard with a single step\n Some other line\n ### Sailent points<br/>*One* _Two_ Three"
+		"description":"This is an example of a wizard with two steps ### Notes: "
 	}
 ]
