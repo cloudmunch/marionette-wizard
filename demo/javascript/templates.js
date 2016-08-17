@@ -34,7 +34,7 @@ define(["dust", "dusthelpers"], function(dust, dust_helpers) {
     dust.register("individual-example", body_0);
 
     function body_0(chk, ctx) {
-      return chk.w("<h3>").f(ctx.get(["title"], false), ctx, "h").w("<h3><span class=\"description\">").f(ctx.get(["description"], false), ctx, "h").w("</span><div class=\"exampleContainer group\"><div class=\"jsonContent\"></div><div class=\"wizardView\"></div></div>");
+      return chk.w("<h3>").f(ctx.get(["title"], false), ctx, "h").w("</h3><span class=\"description\"></span><div class=\"exampleContainer group\"><div class=\"jsonContent\"></div><div class=\"wizardView\"></div></div>");
     }
     body_0.__dustBody = !0;
     return body_0;
