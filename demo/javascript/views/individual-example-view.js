@@ -12,11 +12,11 @@ define ( function( require ) {
 			"wizardView":".wizardView"
 		},
 		onRender: function() {
-			var model = this.model;
+			var thisView = this;
 			$.ajax( {
-				url: "jsons/" + model.get( "id" )
+				url: "jsons/" + thisView.model.get( "id" )
 			} ).then( function( response ) {
-				this.showChildView( "jsonContent", new JSONContentView( {
+				thisView.showChildView( "jsonContent", new JSONContentView( {
 					jsonContent: response
 				} ) );
 			} );
