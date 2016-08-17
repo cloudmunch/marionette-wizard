@@ -21,7 +21,8 @@ define ( function( require ) {
         container: "#backboneContainer"
     } );
     Application.on( "start", function( options ) {
-		$( "#backboneContainer" ).append ( ( new DemoWrapperView() ).render().el );
+		var view = new DemoWrapperView();
+		$( "#backboneContainer" ).append ( view.render().el );
     } );
     Application.start();
 } );
