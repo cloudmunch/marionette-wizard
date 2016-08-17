@@ -3,6 +3,7 @@ define ( function( require ) {
 
 	var Marionette = require( "backbone.marionette" );
 	var JSONContentView = require( "views/json-content" );
+	var WizardView = require( "views/wizard-view" );
 
 	return Marionette.LayoutView.extend( {
 		template: "individual-example",
@@ -18,6 +19,9 @@ define ( function( require ) {
 			} ).then( function( response ) {
 				thisView.showChildView( "jsonContent", new JSONContentView( {
 					jsonContent: response
+				} ) );
+				thisView.showChildView( "wizardView", new WizardView( {
+					process: response
 				} ) );
 			} );
 		}
