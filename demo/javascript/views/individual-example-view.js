@@ -13,7 +13,6 @@ define ( function( require ) {
 		},
 		onRender: function() {
 			var model = this.model;
-			debugger;
 			$.ajax( {
 				url: "jsons/" + model.get( "id" )
 			} ).then( function( response ) {

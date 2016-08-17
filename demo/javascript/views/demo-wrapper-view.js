@@ -21,7 +21,6 @@ define ( function( require ) {
 			$.ajax( {
 				url: "jsons/wizard-examples.json"
 			} ).then( function( response ) {
-				debugger;
 				thisCollection.add( response );
 				thisView.render();
 			} );
