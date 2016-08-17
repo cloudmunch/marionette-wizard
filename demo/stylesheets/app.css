@@ -55,3 +55,10 @@ a.json-placeholder {
 /* line 43, /Users/vivekkodira/cloudmunch/marionette-wizard/demo/stylesheets/_json-viewer.scss */
 a.json-placeholder:hover {
   text-decoration: underline; }
+
+/* line 1, /Users/vivekkodira/cloudmunch/marionette-wizard/demo/stylesheets/_custom.scss */
+.individualExampleDiv {
+  width: 90%;
+  padding: 5px 0 5px 15px;
+  border: 1px solid;
+  border-radius: 5px; }
