@@ -9,6 +9,16 @@ define(["dust", "dusthelpers"], function(dust, dust_helpers) {
     body_0.__dustBody = !0;
     return body_0;
   })();
+  // javascript/templates/hello-world.dust
+  (function() {
+    dust.register("hello-world", body_0);
+
+    function body_0(chk, ctx) {
+      return chk.w("Hello World");
+    }
+    body_0.__dustBody = !0;
+    return body_0;
+  })();
   // javascript/templates/individual-example.dust
   (function() {
     dust.register("individual-example", body_0);
@@ -29,11 +39,42 @@ define(["dust", "dusthelpers"], function(dust, dust_helpers) {
     body_0.__dustBody = !0;
     return body_0;
   })();
+  // javascript/templates/simple-wizard-view.dust
+  (function() {
+    dust.register("simple-wizard-view", body_0);
+
+    function body_0(chk, ctx) {
+      return chk.w("<div class=\"content\"></div>");
+    }
+    body_0.__dustBody = !0;
+    return body_0;
+  })();
   define("demo-wrapper", function() {
     return function(locals, callback) {
       var rendered;
 
       dust.render("demo-wrapper", locals, function(err, result) {
+        if (typeof callback === "function") {
+          try {
+            callback(err, result);
+          } catch (e) {}
+        }
+
+        if (err) {
+          throw err
+        } else {
+          rendered = result;
+        }
+      });
+
+      return rendered;
+    }
+  });
+  define("hello-world", function() {
+    return function(locals, callback) {
+      var rendered;
+
+      dust.render("hello-world", locals, function(err, result) {
         if (typeof callback === "function") {
           try {
             callback(err, result);
@@ -92,5 +133,26 @@ define(["dust", "dusthelpers"], function(dust, dust_helpers) {
       return rendered;
     }
   });
-  return ["demo-wrapper", "individual-example", "json-content"];
+  define("simple-wizard-view", function() {
+    return function(locals, callback) {
+      var rendered;
+
+      dust.render("simple-wizard-view", locals, function(err, result) {
+        if (typeof callback === "function") {
+          try {
+            callback(err, result);
+          } catch (e) {}
+        }
+
+        if (err) {
+          throw err
+        } else {
+          rendered = result;
+        }
+      });
+
+      return rendered;
+    }
+  });
+  return ["demo-wrapper", "hello-world", "individual-example", "json-content", "simple-wizard-view"];
 });
