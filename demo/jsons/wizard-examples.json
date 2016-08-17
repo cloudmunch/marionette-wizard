@@ -3,5 +3,10 @@
 		"id": "single-step.json",
 		"title":"Wizard with a single step",
 		"description":"This is an example of a wizard with a single step\n Some other line\n ### Sailent points<br/>*One* _Two_ Three"
+	},
+	{
+		"id": "two-step.json",
+		"title":"Wizard with a two steps",
+		"description":"This is an example of a wizard with a single step\n Some other line\n ### Sailent points<br/>*One* _Two_ Three"
 	}
 ]
