@@ -11,8 +11,6 @@ requirejs.config( {
   "paths":
   {
     "jquery": "../vendor/jquery.min",
-
-    "bootstrap": "../vendor/bootstrap.min",
     "backbone": "../vendor/backbone",
     "underscore": "../vendor/underscore",
     "backbone.marionette": "../vendor/backbone.marionette",

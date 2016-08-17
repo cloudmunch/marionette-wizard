@@ -7,4 +7,5 @@ define ( function( require ) {
     Application.on( "start", function( options ) {
 		console.log( "hello world" );
     } );
+    Application.start();
 } );
