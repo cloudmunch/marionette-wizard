@@ -1,3 +1,6 @@
-{title} - {description}
-<div class="jsonContent"></div>
-<div class="wizardView"></div>
+<h3>{title}<h3>
+<span class="description">{description}</span>
+<div class="exampleContainer group">
+	<div class="jsonContent"></div>
+	<div class="wizardView"></div>
+</div>
