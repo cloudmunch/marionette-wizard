@@ -4,6 +4,7 @@ define ( function( require ) {
 	var Marionette = require( "backbone.marionette" );
 	var JSONContentView = require( "views/json-content" );
 	var WizardView = require( "views/wizard-view" );
+	var marked = require( "marked" );
 
 	return Marionette.LayoutView.extend( {
 		template: "individual-example",
@@ -14,6 +15,12 @@ define ( function( require ) {
 		},
 		onRender: function() {
 			var thisView = this;
+			marked( thisView.model.get( "description" ), function( err, out ) {
+				if ( err ) {
+					return;
+				}
+				thisView.$el.find( ".description" ).html( out );
+			} );
 			$.ajax( {
 				url: "jsons/" + thisView.model.get( "id" )
 			} ).then( function( response ) {
