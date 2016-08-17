@@ -26,11 +26,11 @@ requirejs.config( {
       exports: "$"
     },
     "backbone": {
-      deps: [ "underscore", "jquery", "bootstrap" ],
+      deps: [ "underscore", "jquery" ],
       exports: "Backbone"
     },
     "backbone.marionette": {
-      deps: [ "backbone", "backbone.advice" ]
+      deps: [ "backbone" ]
     },
     "marionette-wizard": {
       deps: [ "backbone", "backbone.marionette" ]
