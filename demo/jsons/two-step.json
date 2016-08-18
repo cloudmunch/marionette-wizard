@@ -10,7 +10,7 @@
     },
     "second_step": {
       "type": "static_view",
-      "template": "first-screen"
+      "template": "second-screen"
     }
   }
 }
