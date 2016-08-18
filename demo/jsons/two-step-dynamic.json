@@ -3,14 +3,14 @@
   "steps": {
     "first_step": {
       "type": "dynamic_view",
-      "view": "first-screen",
+      "view": "views/first-screen",
       "next": {
         "id": "second_step"
       }
     },
     "second_step": {
       "type": "dynamic_view",
-      "view": "second-screen"
+      "view": "views/second-screen"
     }
   }
 }
