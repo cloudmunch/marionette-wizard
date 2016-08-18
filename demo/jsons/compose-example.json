@@ -7,10 +7,10 @@
       "options": {
         "data": {
           "json": "jsons/included-steps.json"
+        },
+        "next": {
+          "id": "second-step"
         }
-      },
-      "next":{
-        "id":"second-step"
       }
     },
     "second-step": {
@@ -19,10 +19,10 @@
       "options": {
         "data": {
           "json": "behaviors/included-steps.json"
+        },
+        "next": {
+          "id": "last-step"
         }
-      },
-      "next":{
-        "id":"last-step"
       }
     },
     "last-step": {
