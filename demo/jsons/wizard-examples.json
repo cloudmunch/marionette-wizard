@@ -2,7 +2,7 @@
 	{
 		"id": "single-step",
 		"title":"Wizard with a single static step",
-		"description":"This is an example of a wizard with a single step\n\n### Notes:\n\n* The `template` being rendered _as_ the wizard is [ simple-wizard-view.dust ]( https://github.com/cloudmunch/marionette-wizard/blob/gh-pages/demo/javascript/templates/simple-wizard-view.dust). Observe that it defines a div with the class 'contentDiv'. This div is used to display the views associated with each step and so **should** be defined in the view for it to function as a wizard.\n\n* The template being displayed within the wizard is [hello-world](https://github.com/cloudmunch/marionette-wizard/blob/gh-pages/demo/javascript/templates/hello-world.dust)"
+		"description":"This is an example of a wizard with a single step\n\n### Notes:\n\n* The template being displayed within the wizard is [hello-world](https://github.com/cloudmunch/marionette-wizard/blob/gh-pages/demo/javascript/templates/hello-world.dust)\n\n* The `template` being rendered _as_ the wizard is [ simple-wizard-view.dust ]( https://github.com/cloudmunch/marionette-wizard/blob/gh-pages/demo/javascript/templates/simple-wizard-view.dust).\n\n* The wizard template defines a div with the class 'contentDiv'. This div is used to display the views associated with each step and so **should** be defined in the view for it to function as a wizard.\n\n* Another div with class `wizardActions` is used to contain the generic buttons which can be displayed on every page."
 	},
 	{
 		"id": "two-step",
