@@ -69,6 +69,16 @@ define(["dust", "dusthelpers"], function(dust, dust_helpers) {
     body_0.__dustBody = !0;
     return body_0;
   })();
+  // javascript/templates/simple-decider.dust
+  (function() {
+    dust.register("simple-decider", body_0);
+
+    function body_0(chk, ctx) {
+      return chk.w("<div><input type=\"radio\" id=\"hello-world\" name=\"decider\"/><span>Yes</span><input type=\"radio\" id=\"second-screen\" name=\"decider\"/><span>No</span></div><div><button class=\"next\">Next</button></div>");
+    }
+    body_0.__dustBody = !0;
+    return body_0;
+  })();
   // javascript/templates/simple-wizard-view.dust
   (function() {
     dust.register("simple-wizard-view", body_0);
@@ -226,6 +236,27 @@ define(["dust", "dusthelpers"], function(dust, dust_helpers) {
       return rendered;
     }
   });
+  define("simple-decider", function() {
+    return function(locals, callback) {
+      var rendered;
+
+      dust.render("simple-decider", locals, function(err, result) {
+        if (typeof callback === "function") {
+          try {
+            callback(err, result);
+          } catch (e) {}
+        }
+
+        if (err) {
+          throw err
+        } else {
+          rendered = result;
+        }
+      });
+
+      return rendered;
+    }
+  });
   define("simple-wizard-view", function() {
     return function(locals, callback) {
       var rendered;
@@ -247,5 +278,5 @@ define(["dust", "dusthelpers"], function(dust, dust_helpers) {
       return rendered;
     }
   });
-  return ["demo-wrapper", "first-screen", "hello-world", "hello_world", "individual-example", "json-content", "second-screen", "simple-wizard-view"];
+  return ["demo-wrapper", "first-screen", "hello-world", "hello_world", "individual-example", "json-content", "second-screen", "simple-decider", "simple-wizard-view"];
 });
