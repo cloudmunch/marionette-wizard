@@ -1,1 +1,5 @@
 <div class="contentDiv"></div>
+<div class="">
+    <button class="exitButton">Exit</button>
+    <button class="previousButton" style="display:none;">Previous</button>
+</div>
