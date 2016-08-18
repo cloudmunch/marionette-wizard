@@ -22,8 +22,26 @@ define ( function( require ) {
 				url: "jsons/wizard-examples.json"
 			} ).then( function( response ) {
 				thisCollection.add( response );
+				thisView.examples = response;
 				thisView.render();
 			} );
+		},
+		events: {
+			"change select.exampleSelector": "filterExamples"
+		},
+		filterExamples: function() {
+			var home = this.$el;
+			var chosenExample = home.find( "select.exampleSelector" ).val();
+			if ( chosenExample === "all" ) {
+				home.find( ".individualExampleDiv" ).show();
+				return;
+			}
+			var examples = home.find( ".individualExampleDiv" );
+			examples.not( "['data-id'=" + chosenExample + "]" ).hide();
+			examples.is( "['data-id'=" + chosenExample + "]" ).show();
+		},
+		serializeData: function() {
+			return { examples: this.examples };
 		}
 	} );
 } );
