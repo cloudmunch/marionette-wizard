@@ -1,21 +1,21 @@
 [
 	{
-		"id": "single-step.json",
+		"id": "single-step",
 		"title":"Wizard with a single static step",
 		"description":"This is an example of a wizard with a single step\n\n### Notes:\n\n* The `template` being rendered _as_ the wizard is [ simple-wizard-view.dust ]( https://github.com/cloudmunch/marionette-wizard/blob/gh-pages/demo/javascript/templates/simple-wizard-view.dust). Observe that it defines a div with the class 'contentDiv'. This div is used to display the views associated with each step and so **should** be defined in the view for it to function as a wizard.\n\n* The template being displayed within the wizard is [hello-world](https://github.com/cloudmunch/marionette-wizard/blob/gh-pages/demo/javascript/templates/hello-world.dust)"
 	},
 	{
-		"id": "two-step.json",
+		"id": "two-step",
 		"title":"Wizard with a two static steps",
 		"description":"This is an example of a wizard with two steps\n\n### Notes:\n\n* The `templates` used in this wizard are [first-screen.dust](https://github.com/cloudmunch/marionette-wizard/blob/gh-pages/demo/javascript/templates/first-screen.dust) and [second-screen.dust](https://github.com/cloudmunch/marionette-wizard/blob/gh-pages/demo/javascript/templates/second-screen.dust).\n\n* The first screen has a `Next` button.An element with class `next` is necessary in the template. Clicking on it tells the wizard to execute the next step."
 	},
 	{
-		"id": "two-step-dynamic.json",
+		"id": "two-step-dynamic",
 		"title":"Wizard with a two dynamic steps",
 		"description":"This example is very similar to the previous one. However the steps are of type `dynamic_view`\n\n### Notes:\n\n* The `views` used in this wizard are [first-screen-view.js](https://github.com/cloudmunch/marionette-wizard/blob/gh-pages/demo/javascript/views/first-screen-view.js) and [second-screen-view.js](https://github.com/cloudmunch/marionette-wizard/blob/gh-pages/demo/javascript/views/second-screen-view.js).\n\n* The view `first-screen-view` has an event handler to handle the user clicking on the `Next` button. Unlike static steps, **all event handling has to be coded for within dynamic views**.\n\n* To let the wizard know that the view has finished processing, it can invoke `this.options.viewPromise.resolve()` or `this.options.viewPromise.reject()`"
 	},
 	{
-		"id": "branching-example.json",
+		"id": "branching-example",
 		"title":"Wizard with branching",
 		"description":"This is an example of branching within the wizard. For such branching, the step **has** to be of type: `dynamic_view`.\n\n### Notes:\n\n* The `view` used in the first screen of the wizard is [simple-decider-view.js](https://github.com/cloudmunch/marionette-wizard/blob/gh-pages/demo/javascript/views/simple-decider-view.js).\n\n* The view ensures that the chosen value is put into `params`.\n\n* Within the step's next block this param is checked to decide which step to execute next"
 	}
