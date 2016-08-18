@@ -5,7 +5,7 @@
       "type": "static_view",
       "first-step": "yes",
       "last-step": "yes",
-      "template": "hello-world"
+      "template": "first-screen"
     }
   }
 }
