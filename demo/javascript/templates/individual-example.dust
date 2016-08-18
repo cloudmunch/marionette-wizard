@@ -4,7 +4,6 @@
 	<h4 class="column">JSON</h4>
 	<h4 class="column">Wizard</h4>
 </div>
-<h4 class="column">
 <div class="exampleContainer group row">
 	<div class="jsonContent column"></div>
 	<div class="wizardView column"></div>
