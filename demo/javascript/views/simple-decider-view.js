@@ -9,7 +9,7 @@ define ( function( require ) {
 			"change input":"decide"
 		},
 		decide: function() {
-			this.options.params.nextScreen = this.$el.find( "input:checked" ).val();
+			this.options.params.nextScreen = this.$el.find( "input:checked" ).attr( "id" );
 			this.options.viewPromise.resolve();
 		}
 	} );
