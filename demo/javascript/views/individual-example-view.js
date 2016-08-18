@@ -18,6 +18,21 @@ define ( function( require ) {
 			"jsonContent": ".jsonContent",
 			"wizardView":".wizardView"
 		},
+		events: {
+			"click .reloadWizard":"showWizard"
+		},
+		showJSONContent: function() {
+			var thisView = this;
+			thisView.showChildView( "jsonContent", new JSONContentView( {
+				jsonContent: thisView.jsonContent
+			} ) );
+		},
+		showWizard: function() {
+			var thisView = this;
+			thisView.showChildView( "wizardView", new WizardView( {
+				process: thisView.jsonContent
+			} ) );
+		},
 		onRender: function() {
 			var thisView = this;
 			marked( thisView.model.get( "description" ), function( err, out ) {
@@ -29,12 +44,9 @@ define ( function( require ) {
 			$.ajax( {
 				url: "jsons/" + thisView.model.get( "id" ) + ".json"
 			} ).then( function( response ) {
-				thisView.showChildView( "jsonContent", new JSONContentView( {
-					jsonContent: response
-				} ) );
-				thisView.showChildView( "wizardView", new WizardView( {
-					process: response
-				} ) );
+				thisView.jsonContent = response;
+				thisView.showWizard();
+				thisView.showJSONContent();
 			} );
 		}
 	} );
