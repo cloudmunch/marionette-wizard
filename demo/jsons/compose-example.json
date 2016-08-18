@@ -6,7 +6,7 @@
       "behavior": "behaviors/load-steps",
       "options": {
         "data": {
-          "json": "behaviors/included-steps.json"
+          "json": "jsons/included-steps.json"
         }
       },
       "next":{
