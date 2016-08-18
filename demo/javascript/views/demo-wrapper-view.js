@@ -37,8 +37,8 @@ define ( function( require ) {
 				return;
 			}
 			var examples = home.find( ".individualExampleDiv" );
-			examples.not( "['data-id'=" + chosenExample + "]" ).hide();
-			examples.is( "['data-id'=" + chosenExample + "]" ).show();
+			examples.not( "[data-id='" + chosenExample + "']" ).hide();
+			examples.is( "[data-id='" + chosenExample + "']" ).show();
 		},
 		serializeData: function() {
 			return { examples: this.examples };
