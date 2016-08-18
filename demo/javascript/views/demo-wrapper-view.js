@@ -38,7 +38,12 @@ define ( function( require ) {
 			}
 			var examples = home.find( ".individualExampleDiv" );
 			examples.not( "[data-id='" + chosenExample + "']" ).hide();
-			examples.is( "[data-id='" + chosenExample + "']" ).show();
+			_.each( examples, function( elementRaw ) {
+				var element = $( elementRaw );
+				if ( element.data( "id" ) === chosenExample  ) {
+					element.show();
+				}
+			} );
 		},
 		serializeData: function() {
 			return { examples: this.examples };
