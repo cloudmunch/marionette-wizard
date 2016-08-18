@@ -1,8 +1,8 @@
 <h3>{title}</h3>
 <span class="description"></span>
 <div class="row group">
-	<h4 class="column">JSON</h4>
-	<h4 class="column">Wizard</h4>
+	<span class="column"><h4>JSON</h4></span>
+	<span class="column"><h4>Wizard</h4>&nbsp;<button class="reloadWizard">Reload</button></span>
 </div>
 <div class="exampleContainer group row">
 	<div class="jsonContent column"></div>

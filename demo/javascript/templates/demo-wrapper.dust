@@ -1,6 +1,7 @@
 <h2>Marionette Wizard Examples</h2>
 <span>On this page you'll find several examples explaining how a wizard can be built. The examples range from the very simple (using static templates) to more complex ones which contain some branching - to even more complex ones demonstrating how to compose a wizard from several other reusable JSONs</span>
 <br/><br/>
+<span>Filter examples: </span>
 <select class="exampleSelector">
 	<option value="all">All</option>
 	{#examples}
