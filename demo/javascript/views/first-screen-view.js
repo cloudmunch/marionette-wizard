@@ -4,6 +4,12 @@ define ( function( require ) {
 	var Marionette = require( "backbone.marionette" );
 
 	return Marionette.ItemView.extend( {
-		template: "first-screen"
+		template: "first-screen",
+		events:{
+			"click .next": "goAhead"
+		},
+		goAhead: function() {
+			this.options.viewPromise.resolve();
+		}
 	} );
 } );
