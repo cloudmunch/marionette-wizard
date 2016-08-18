@@ -9,13 +9,13 @@
           {
             "criteria": "nextScreen",
             "condition":"==",
-            "value":"first-screen",
+            "value":"hello-world",
             "id":"first-screen-step"
           },
           {
             "criteria": "nextScreen",
             "condition":"!=",
-            "value":"first-screen",
+            "value":"hello-world",
             "id":"second-screen-step"
           }
         ]
@@ -25,7 +25,7 @@
       "type": "static_view",
       "view": "hello-world"
     },
-    "second_step": {
+    "second-screen-step": {
       "type": "static_view",
       "view": "second-screen"
     }
