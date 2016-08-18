@@ -6,10 +6,10 @@
       "behavior": "behaviors/load-steps",
       "options": {
         "data": {
-          "json": "jsons/included-steps.json"
-        },
-        "next": {
-          "id": "second-step"
+          "json": "jsons/included-steps.json",
+          "next": {
+            "id": "second-step"
+          }
         }
       }
     },
@@ -18,10 +18,10 @@
       "behavior": "behaviors/load-steps",
       "options": {
         "data": {
-          "json": "behaviors/included-steps.json"
-        },
-        "next": {
-          "id": "last-step"
+          "json": "behaviors/included-steps.json",
+          "next": {
+            "id": "last-step"
+          }
         }
       }
     },
