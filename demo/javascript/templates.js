@@ -9,12 +9,22 @@ define(["dust", "dusthelpers"], function(dust, dust_helpers) {
     body_0.__dustBody = !0;
     return body_0;
   })();
+  // javascript/templates/first-screen.dust
+  (function() {
+    dust.register("first-screen", body_0);
+
+    function body_0(chk, ctx) {
+      return chk.w("<div>First Screen</div><div><button class=\"next\">Next</button></div>");
+    }
+    body_0.__dustBody = !0;
+    return body_0;
+  })();
   // javascript/templates/hello-world.dust
   (function() {
     dust.register("hello-world", body_0);
 
     function body_0(chk, ctx) {
-      return chk.w("Hello World");
+      return chk.w("<div>Hello World</div>");
     }
     body_0.__dustBody = !0;
     return body_0;
@@ -49,12 +59,22 @@ define(["dust", "dusthelpers"], function(dust, dust_helpers) {
     body_0.__dustBody = !0;
     return body_0;
   })();
+  // javascript/templates/second-screen.dust
+  (function() {
+    dust.register("second-screen", body_0);
+
+    function body_0(chk, ctx) {
+      return chk.w("<div>Second Screen</div>");
+    }
+    body_0.__dustBody = !0;
+    return body_0;
+  })();
   // javascript/templates/simple-wizard-view.dust
   (function() {
     dust.register("simple-wizard-view", body_0);
 
     function body_0(chk, ctx) {
-      return chk.w("<div class=\"contentDiv\"></div>");
+      return chk.w("<div class=\"contentDiv\"></div><div class=\"\"><button class=\"exitButton\">Exit</button><button class=\"previousButton\" style=\"display:none;\">Previous</button></div>");
     }
     body_0.__dustBody = !0;
     return body_0;
@@ -64,6 +84,27 @@ define(["dust", "dusthelpers"], function(dust, dust_helpers) {
       var rendered;
 
       dust.render("demo-wrapper", locals, function(err, result) {
+        if (typeof callback === "function") {
+          try {
+            callback(err, result);
+          } catch (e) {}
+        }
+
+        if (err) {
+          throw err
+        } else {
+          rendered = result;
+        }
+      });
+
+      return rendered;
+    }
+  });
+  define("first-screen", function() {
+    return function(locals, callback) {
+      var rendered;
+
+      dust.render("first-screen", locals, function(err, result) {
         if (typeof callback === "function") {
           try {
             callback(err, result);
@@ -164,6 +205,27 @@ define(["dust", "dusthelpers"], function(dust, dust_helpers) {
       return rendered;
     }
   });
+  define("second-screen", function() {
+    return function(locals, callback) {
+      var rendered;
+
+      dust.render("second-screen", locals, function(err, result) {
+        if (typeof callback === "function") {
+          try {
+            callback(err, result);
+          } catch (e) {}
+        }
+
+        if (err) {
+          throw err
+        } else {
+          rendered = result;
+        }
+      });
+
+      return rendered;
+    }
+  });
   define("simple-wizard-view", function() {
     return function(locals, callback) {
       var rendered;
@@ -185,5 +247,5 @@ define(["dust", "dusthelpers"], function(dust, dust_helpers) {
       return rendered;
     }
   });
-  return ["demo-wrapper", "hello-world", "hello_world", "individual-example", "json-content", "simple-wizard-view"];
+  return ["demo-wrapper", "first-screen", "hello-world", "hello_world", "individual-example", "json-content", "second-screen", "simple-wizard-view"];
 });
