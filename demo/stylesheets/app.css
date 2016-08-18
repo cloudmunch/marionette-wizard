@@ -67,18 +67,19 @@ a.json-placeholder:hover {
 /* line 8, /Users/vivekkodira/cloudmunch/marionette-wizard/demo/stylesheets/_custom.scss */
 .individualExampleDiv {
   width: 90%;
+  margin-top: 10px;
   padding: 5px 0 5px 15px;
   border: 1px solid;
   border-radius: 5px; }
-  /* line 14, /Users/vivekkodira/cloudmunch/marionette-wizard/demo/stylesheets/_custom.scss */
+  /* line 15, /Users/vivekkodira/cloudmunch/marionette-wizard/demo/stylesheets/_custom.scss */
   .individualExampleDiv .exampleTitles h4 {
     display: inline-block; }
 
-/* line 19, /Users/vivekkodira/cloudmunch/marionette-wizard/demo/stylesheets/_custom.scss */
+/* line 20, /Users/vivekkodira/cloudmunch/marionette-wizard/demo/stylesheets/_custom.scss */
 .row {
   width: 100%; }
 
-/* line 22, /Users/vivekkodira/cloudmunch/marionette-wizard/demo/stylesheets/_custom.scss */
+/* line 23, /Users/vivekkodira/cloudmunch/marionette-wizard/demo/stylesheets/_custom.scss */
 .column {
   width: 45%;
   padding: 5px;
