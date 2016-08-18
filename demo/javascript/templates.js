@@ -4,9 +4,9 @@ define(["dust", "dusthelpers"], function(dust, dust_helpers) {
     dust.register("demo-wrapper", body_0);
 
     function body_0(chk, ctx) {
-      return chk.w("<h2>Marionette Wizard Examples</h2><span>On this page you'll find several examples explaining how a wizard can be built. The example range from the very simple (using static templates) to more complex ones which contain some branching - to even more complex ones demonstrating how to compose a wizard from several other reusable JSONs</span><select class=\"exampleSelector\"><option value=\"all\">All</option>").s(ctx.get(["examples"], false), ctx, {
+      return chk.w("<h2>Marionette Wizard Examples</h2><span>On this page you'll find several examples explaining how a wizard can be built. The examples range from the very simple (using static templates) to more complex ones which contain some branching - to even more complex ones demonstrating how to compose a wizard from several other reusable JSONs</span><br/><br/><select class=\"exampleSelector\"><option value=\"all\">All</option>").s(ctx.get(["examples"], false), ctx, {
         "block": body_1
-      }, {}).w("</select><div class=\"childViewContainer\"></div>");
+      }, {}).w("</select><br/><div class=\"childViewContainer\"></div>");
     }
     body_0.__dustBody = !0;
 
