@@ -1,0 +1,7 @@
+<div>
+	<input type="radio" id="hello-world" name="decider"/><span>Yes</span>
+	<input type="radio" id="second-screen" name="decider"/><span>No</span>
+</div>
+<div>
+   <button class="next">Next</button>
+</div>
