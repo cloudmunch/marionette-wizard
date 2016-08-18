@@ -10,12 +10,12 @@
     padding: 5px 0 5px 15px;
     border: 1px solid;
     border-radius: 5px;
-    .jsonContent {
-    	width:50%;
-        float: left;
-    }
-    .wizardView {
-        width:50%;
-        float: left;
-    }
+}
+.row {
+    width:100%;
+}
+.column{
+    width:45%;
+    padding: 5px;
+    float: left;
 }
