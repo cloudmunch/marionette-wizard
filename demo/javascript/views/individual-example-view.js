@@ -9,6 +9,11 @@ define ( function( require ) {
 	return Marionette.LayoutView.extend( {
 		template: "individual-example",
 		className: "individualExampleDiv",
+		attributes: function() {
+			return {
+				"data-id": this.model.get( "id" )
+			};
+		},
 		regions:  {
 			"jsonContent": ".jsonContent",
 			"wizardView":".wizardView"
@@ -22,7 +27,7 @@ define ( function( require ) {
 				thisView.$el.find( ".description" ).html( out );
 			} );
 			$.ajax( {
-				url: "jsons/" + thisView.model.get( "id" )
+				url: "jsons/" + thisView.model.get( "id" ) + ".json"
 			} ).then( function( response ) {
 				thisView.showChildView( "jsonContent", new JSONContentView( {
 					jsonContent: response
