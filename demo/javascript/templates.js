@@ -4,9 +4,16 @@ define(["dust", "dusthelpers"], function(dust, dust_helpers) {
     dust.register("demo-wrapper", body_0);
 
     function body_0(chk, ctx) {
-      return chk.w("<div></div><div class=\"childViewContainer\"></div>");
+      return chk.w("<h2>Marionette Wizard Examples</h2><span>On this page you'll find several examples explaining how a wizard can be built. The example range from the very simple (using static templates) to more complex ones which contain some branching - to even more complex ones demonstrating how to compose a wizard from several other reusable JSONs</span><select class=\"exampleSelector\"><option value=\"all\">All</option>").s(ctx.get(["examples"], false), ctx, {
+        "block": body_1
+      }, {}).w("</select><div class=\"childViewContainer\"></div>");
     }
     body_0.__dustBody = !0;
+
+    function body_1(chk, ctx) {
+      return chk.w("<option value=\"").f(ctx.get(["id"], false), ctx, "h").w("\">").f(ctx.get(["title"], false), ctx, "h").w("</option>");
+    }
+    body_1.__dustBody = !0;
     return body_0;
   })();
   // javascript/templates/first-screen.dust
@@ -74,7 +81,7 @@ define(["dust", "dusthelpers"], function(dust, dust_helpers) {
     dust.register("simple-decider", body_0);
 
     function body_0(chk, ctx) {
-      return chk.w("<div><input type=\"radio\" id=\"hello-world\" name=\"decider\"/><span>Yes</span><input type=\"radio\" id=\"second-screen\" name=\"decider\"/><span>No</span></div><div><button class=\"next\">Next</button></div>");
+      return chk.w("<div><input type=\"radio\" id=\"hello-world\" name=\"decider\"/><span>Show Hello World</span><input type=\"radio\" id=\"second-screen\" name=\"decider\"/><span>Show Second Screen</span></div><div><button class=\"next\">Next</button></div>");
     }
     body_0.__dustBody = !0;
     return body_0;
