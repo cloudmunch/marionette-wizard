@@ -1,0 +1,16 @@
+{
+  "start": "first_step",
+  "steps": {
+    "first_step": {
+      "type": "dynamic_view",
+      "view": "first-screen",
+      "next": {
+        "id": "second_step"
+      }
+    },
+    "second_step": {
+      "type": "dynamic_view",
+      "view": "second-screen"
+    }
+  }
+}
