@@ -1,0 +1,11 @@
+{
+  "start": "start_step",
+  "steps": {
+    "start_step": {
+      "type": "static_view",
+      "first-step": "yes",
+      "last-step": "yes",
+      "template": "hello-world"
+    }
+  }
+}

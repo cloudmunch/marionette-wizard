@@ -1,0 +1,33 @@
+{
+  "start": "start-step",
+  "steps": {
+    "start-step": {
+      "type": "behavior",
+      "behavior": "behaviors/load-steps",
+      "options": {
+        "data": {
+          "json": "behaviors/included-steps.json"
+        }
+      },
+      "next":{
+        "id":"second-step"
+      }
+    },
+    "second-step": {
+      "type": "behavior",
+      "behavior": "behaviors/load-steps",
+      "options": {
+        "data": {
+          "json": "behaviors/included-steps.json"
+        }
+      },
+      "next":{
+        "id":"last-step"
+      }
+    },
+    "last-step": {
+      "type": "static_view",
+      "template": "second-screen"
+    }
+  }
+}
