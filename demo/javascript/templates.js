@@ -74,7 +74,7 @@ define(["dust", "dusthelpers"], function(dust, dust_helpers) {
     dust.register("simple-decider", body_0);
 
     function body_0(chk, ctx) {
-      return chk.w("<div><input type=\"radio\" id=\"hello-world\" name=\"decider\"/><span>Yes</span><input type=\"radio\" id=\"second-screen\" name=\"decider\"/><span>No</span></div><div><button class=\"next\">Next</button></div>");
+      return chk.w("<div><input type=\"radio\" val=\"hello-world\" name=\"decider\"/><span>Yes</span><input type=\"radio\" val=\"second-screen\" name=\"decider\"/><span>No</span></div><div><button class=\"next\">Next</button></div>");
     }
     body_0.__dustBody = !0;
     return body_0;
