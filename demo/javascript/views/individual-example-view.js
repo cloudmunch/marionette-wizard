@@ -30,6 +30,7 @@ define ( function( require ) {
 		showWizard: function() {
 			var thisView = this;
 			thisView.showChildView( "wizardView", new WizardView( {
+				wizardTemplate: thisView.model.get( "id" ),
 				process: thisView.jsonContent
 			} ) );
 		},
