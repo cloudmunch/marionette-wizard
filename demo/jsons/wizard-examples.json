@@ -12,6 +12,6 @@
 	{
 		"id": "two-step-dynamic.json",
 		"title":"Wizard with a two dynamic steps",
-		"description":"This example is very similar to the previous one. However the steps are of type `dynamic_view`\n\n### Notes:\n\nThe `views` used in this wizard are [first-screen](https://github.com/cloudmunch/marionette-wizard/blob/gh-pages/demo/javascript/views/first-screen-view.js) and [second-screen](https://github.com/cloudmunch/marionette-wizard/blob/gh-pages/demo/javascript/views/second-screen-view.js).\n\n"
+		"description":"This example is very similar to the previous one. However the steps are of type `dynamic_view`\n\n### Notes:\n\nThe `views` used in this wizard are [first-screen-view](https://github.com/cloudmunch/marionette-wizard/blob/gh-pages/demo/javascript/views/first-screen-view.js) and [second-screen-view](https://github.com/cloudmunch/marionette-wizard/blob/gh-pages/demo/javascript/views/second-screen-view.js).\n\nNote that the view `first-screen-view` an event handler to handle clicking on the `Next` button has been added. Unlike static steps, event handling has to be coded for within dynamic views."
 	}
 ]
