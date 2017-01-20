@@ -46,6 +46,19 @@ define( function( require ) {
 	GenericBehavior.extend = Backbone.Model.extend;
 
 	var privateMethods = {
+		stepIsRestartable: function( step, params ) {
+			var restartableValue = step.get( "restartable" );
+			if ( _.isString( restartableValue ) ) {
+				return restartableValue === "yes";
+			} else if ( _.isArray( restartableValue ) ) {
+				var outcome = true;
+				_.forEach( restartableValue, function( dependency ) {
+					outcome = outcome && privateMethods.checkDependency( dependency, params );
+				} );
+				return outcome;
+			}
+			return false;
+		},
 		getOneUpID: function( inputs ) {
 	        var prefix = inputs.prefix;
 	        var tempValue = inputs.tempValue || inputs.prefix;
@@ -353,7 +366,7 @@ define( function( require ) {
 	            wizardTemplate.meta.currentStep = lastStepID ;
 	            thisView.stepBeingExecuted = lastStep;
 	            thisView.updateTemplate( wizardTemplate );
-	            if ( lastStep.get( "restartable" ) !== "yes" ) {
+	            if ( !privateMethods.stepIsRestartable( lastStep, wizardTemplate.data )  ) {
 	                thisView.goBack();
 	                return;
 	            }
@@ -398,6 +411,10 @@ define( function( require ) {
 	                executedSteps.shift();
 	                var nextStepID = executedSteps.length > 0 ? _.first( executedSteps ).id : currentStep;
 	                var nextStep = inputs.steps.get( nextStepID );
+					if ( !nextStep ) {
+						console.error( "Couldn't find next step: " + nextStepID );
+						thisView.showWizardExecutionError( "There was an issue in retracing steps. Please restart the wizard" );
+	                }
 	                if ( nextStep.get( "id" ) === currentStep ) {
 	                    inputs.dummyProcessingPromise.resolve();
 	                    return;
@@ -600,7 +617,7 @@ define( function( require ) {
 	            thisView.stepBeingExecuted = step;
 	            var wizardTemplate = thisView.getWizardTemplate();
 	            console.debug( "Wizard processing step: ", step.get( "id" ) );
-	            if ( step.get( "restartable" ) === "yes" ) {
+	            if ( privateMethods.stepIsRestartable( step, params ) ) {
 	                wizardTemplate.meta.currentStep = step.get( "id" );
 	            }
 	            thisView.updateTemplate( wizardTemplate );
