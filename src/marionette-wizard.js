@@ -601,7 +601,12 @@ define( function( require ) {
 	            var data = wizardTemplate.data = wizardTemplate.data || {};
 	            _.forEach( store || [], function( key ) {
 	                if ( typeof key === "string" && params [ key ] ) {
-	                    data[ key ] = params [ key ];
+	                    if ( key.indexOf( ":" ) === -1 && params [ key ] ) {
+							data[ key ] = params [ key ];
+						} else {
+							var contents = key.split( ":" );
+							data[ contents[ 0 ] ] = contents[ 1 ];
+						}
 	                } else {
 	                    var keyString = _.keys( key )[ 0 ];
 	                    data[ key [ keyString ] ]  = params [ key [ keyString ] ] = params [ keyString ];
