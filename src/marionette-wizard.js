@@ -600,7 +600,7 @@ define( function( require ) {
 	            var wizardTemplate = thisView.getWizardTemplate();
 	            var data = wizardTemplate.data = wizardTemplate.data || {};
 	            _.forEach( store || [], function( key ) {
-	                if ( typeof key === "string" && params [ key ] ) {
+	                if ( typeof key === "string" ) {
 	                    if ( key.indexOf( ":" ) === -1 && params [ key ] ) {
 							data[ key ] = params [ key ];
 						} else {
