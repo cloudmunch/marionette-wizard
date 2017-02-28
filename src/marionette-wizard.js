@@ -354,7 +354,7 @@ define( function( require ) {
 	            var stepBeingExecuted = thisView.stepBeingExecuted;
 	            var stageBeingExecuted = stepBeingExecuted.get( "stage" );
 	            var currentStage = lastStep.get( "stage" );
-	            if ( stageBeingExecuted ) {
+	            if ( stageBeingExecuted && thisView.progressStages ) {
 	                var completedStageModel = thisView.progressStages.get( stageBeingExecuted );
 	                if ( stageBeingExecuted === currentStage ) {
 	                    completedStageModel.set( "status", PROGRESS_BEGUN );
