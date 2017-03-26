@@ -46,6 +46,27 @@ define( function( require ) {
 	GenericBehavior.extend = Backbone.Model.extend;
 
 	var privateMethods = {
+		getEarlierKeys: function( earlierSteps ) {
+			var keys = [];
+			_.each( earlierSteps, function( step ) {
+				_.each( step.store || [], function( key ) {
+					var keyToCompare;
+					if ( typeof key === "string" ) {
+				        if ( key.indexOf( ":" ) === -1 ) {
+							keyToCompare = key;
+						} else {
+							var contents = key.split( ":" );
+							keyToCompare = contents[ 0 ];
+						}
+				    } else {
+				        var keyString = _.keys( key )[ 0 ];
+				        keyToCompare = key[ keyString ];
+				    }
+					keys.push( keyToCompare );
+				} );
+			} );
+			return _.unique( keys );
+		},
 		stepIsRestartable: function( step, params ) {
 			var restartableValue = step.get( "restartable" );
 			if ( _.isString( restartableValue ) ) {
@@ -330,8 +351,8 @@ define( function( require ) {
 	        } else {
 	            stepExecutionPromise = privateMethods.repeatedStepUtility(  View, callBack, params, step );
 	        }
-	        stepExecutionPromise.then( function() {
-	            dynamicPagePromise.resolve( params );
+	        stepExecutionPromise.then( function( outcome ) {
+	            dynamicPagePromise.resolve( outcome );
 	        }, function( message ) {
 	            dynamicPagePromise.reject( message );
 	        } );
@@ -352,16 +373,17 @@ define( function( require ) {
 	        },
 	        goBack: function( evt ) {
 	            var thisView = this;
+	            var stepBeingExecuted = thisView.stepBeingExecuted;
 	            var wizardTemplate = thisView.getWizardTemplate();
+				wizardTemplate = thisView.removeParams( stepBeingExecuted, wizardTemplate.meta.executedSteps );
 	            var lastStep = new Model( wizardTemplate.meta.executedSteps.pop() );
 	            if ( !lastStep ) {
 	                return;
 	            }
 	            var lastStepID = lastStep.get( "id" );
-	            var stepBeingExecuted = thisView.stepBeingExecuted;
 	            var stageBeingExecuted = stepBeingExecuted.get( "stage" );
 	            var currentStage = lastStep.get( "stage" );
-	            if ( stageBeingExecuted ) {
+	            if ( stageBeingExecuted && thisView.progressStages ) {
 	                var completedStageModel = thisView.progressStages.get( stageBeingExecuted );
 	                if ( stageBeingExecuted === currentStage ) {
 	                    completedStageModel.set( "status", PROGRESS_BEGUN );
@@ -523,10 +545,10 @@ define( function( require ) {
 	                }, step.get( "options" ) );
 	                var view = new View( options );
 	                thisView.showChildView( "content", view );
-	                viewPromise.then( function() {
+	                viewPromise.then( function( outcome ) {
 	                    viewPromise = null;/*Checking if this helps*/
 	                    view.destroy();
-	                    stepExecutionPromise.resolve( params );
+	                    stepExecutionPromise.resolve( outcome );
 	                }, function( message ) {
 	                    view.destroy();
 	                    stepExecutionPromise.reject( message );
@@ -539,6 +561,7 @@ define( function( require ) {
 	            return dynamicPagePromise;
 	        },
 	        getNextStep: function( inputs, step ) {
+				var thisView = this;
 	            var params = inputs.params;
 	            var wizardTemplate = this.getWizardTemplate();
 	            wizardTemplate.meta = wizardTemplate.meta || {};
@@ -547,7 +570,7 @@ define( function( require ) {
 	            if ( notStackable === "no" ) {
 	                wizardTemplate.meta.executedSteps.push( step );
 	            }
-	            this.updateTemplate( wizardTemplate );
+	            thisView.updateTemplate( wizardTemplate );
 
 	            var nextStepTag = step.get( "next" );
 	            if ( !nextStepTag ) {
@@ -607,23 +630,59 @@ define( function( require ) {
 	                }
 	            } );
 	        },
-	        storeData: function( step, params ) {
-	            var thisView = this;
-	            var store = step.get( "store" );
-	            var wizardTemplate = thisView.getWizardTemplate();
-	            var data = wizardTemplate.data = wizardTemplate.data || {};
-	            _.forEach( store || [], function( key ) {
-	                if ( typeof key === "string" ) {
-	                    if ( key.indexOf( ":" ) === -1 && params [ key ] ) {
+
+			removeParams: function( step, earlierSteps ) {
+				var thisView = this;
+				var wizardTemplate = thisView.getWizardTemplate();
+				var data = wizardTemplate.data = wizardTemplate.data || {};
+				_.forEach( data, function( value, keyToDelete ) {
+					if ( !_.contains( privateMethods.getEarlierKeys( earlierSteps ), keyToDelete ) ) {
+						delete data [ keyToDelete ];
+					}
+				} );
+				thisView.updateTemplate( wizardTemplate );
+				return wizardTemplate;
+			},
+			storeData: function( step, params ) {
+				var thisView = this;
+				var store = step.get( "store" );
+				var wizardTemplate = thisView.getWizardTemplate();
+				var data = wizardTemplate.data = wizardTemplate.data || {};
+				_.forEach( store || [], function( key ) {
+					if ( typeof key === "string" ) {
+						if ( key.indexOf( ":" ) === -1 && params [ key ] ) {
 							data[ key ] = params [ key ];
 						} else {
 							var contents = key.split( ":" );
 							data[ contents[ 0 ] ] = contents[ 1 ];
+							params[ contents[ 0 ] ] = contents[ 1 ];
 						}
 	                } else {
 	                    var keyString = _.keys( key )[ 0 ];
 	                    data[ key [ keyString ] ]  = params [ key [ keyString ] ] = params [ keyString ];
 	                }
+	            } );
+	            thisView.updateTemplate( wizardTemplate );
+	        },
+	        removeData: function( step, params ) {
+				var thisView = this;
+				var store = step.get( "store" );
+				var wizardTemplate = thisView.getWizardTemplate();
+				var data = wizardTemplate.data = wizardTemplate.data || {};
+				_.forEach( store || [], function( key ) {
+					var keyString;
+					if ( typeof key === "string" ) {
+						if ( key.indexOf( ":" ) === -1 && params [ key ] ) {
+							keyString = key;
+						} else {
+							var contents = key.split( ":" );
+							keyString = contents[ 0 ];
+						}
+	                } else {
+						keyString = key [ _.keys( key )[ 0 ] ];
+	                }
+					delete data[ keyString ];
+					delete params[ keyString ];
 	            } );
 	            thisView.updateTemplate( wizardTemplate );
 	        },
@@ -651,13 +710,18 @@ define( function( require ) {
 		                    "showDynamicPage" : "processBehavior" ) ;
 
 		            var stepPromise = thisView[ processFunction ]( params, step, inputs );
-		            stepPromise.then( function() {
+		            stepPromise.then( function( outcome ) {
 		                stepPromise = null;
-		                thisView.storeData( step, params );
+		                if ( !outcome || ( outcome !== "skipped" && outcome !== "removeParams" ) ) {
+			                thisView.storeData( step, params );
+		                } if ( outcome === "removeParams" ) {
+							wizardTemplate = thisView.removeData( step, params );
+		                }
 		                if ( dummyProcessing ) {
 		                    processStepsPromise.resolve();
 		                    return;
 		                }
+						inputs.params = params;
 		                var nextStep = thisView.getNextStep( inputs, step );
 		                if ( nextStep ) {
 		                    setTimeout( function() {
