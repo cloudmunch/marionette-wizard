@@ -576,6 +576,9 @@ define( function( require ) {
 	        },
 	        showHideButtons: function( step ) {
 	            var thisView = this;
+				if ( step.get( "type" ) === "behavior" ) {
+					return;
+				}
 	            privateMethods.doWhenAvailable( function() {
 	                return $( thisView.wizardActions.el );
 	            }, function( target ) {
