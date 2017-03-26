@@ -464,7 +464,9 @@ define( function( require ) {
 	        processBehavior: function( params, step, inputs ) {
 	            var processBehaviorPromise = $.Deferred();
 	            var thisView = this;
-	            thisView.$el.find( ".contentDiv" ).html( "" );
+	            /* The method is being assigned to the view so that "this" is the view */
+	            thisView.duringBehaviorProcessing = thisView.getDefaultMethod( "duringBehaviorProcessing" );
+	            thisView.duringBehaviorProcessing();
 	            /*
 	                params has been made a parameter to the method.
 	                DO NOT change to use a closure. The params passed
