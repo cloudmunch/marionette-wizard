@@ -205,11 +205,18 @@ define( function( require ) {
 	        }
 	    },
 		resolveObject: function( actualValue, criteria ) {
+			/* The value may not exist at all */
+			if ( !actualValue ) {
+				return;
+			}
 	        if ( criteria.indexOf( "." ) > -1 ) {
 	            /* ex - criteria = "jenkinsIntegration.configuration.scope" */
 	            var objectNodes = criteria.split( "." );
 	            _.forEach( objectNodes, function( node ) {
 	                /* Keep traversing actualValue object till the last/desired node */
+	                if ( !actualValue ) {
+						return false;
+	                }
 	                actualValue = actualValue[ node ];
 	            } );
 	        }else {
@@ -414,6 +421,7 @@ define( function( require ) {
 					if ( !nextStep ) {
 						console.error( "Couldn't find next step: " + nextStepID );
 						thisView.showWizardExecutionError( "There was an issue in retracing steps. Please restart the wizard" );
+						return;
 	                }
 	                if ( nextStep.get( "id" ) === currentStep ) {
 	                    inputs.dummyProcessingPromise.resolve();
